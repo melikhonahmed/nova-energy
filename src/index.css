@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #F4F6F4;
+  --color-ink: #111811;
+  --color-sage-dark: #2D4030;
+  --color-sage-mid: #6B8A7A;
+  --color-sage-light: #DAD3BE;
+  --color-accent: #A7D397;
+  --color-line: rgba(17, 24, 17, 0.08);
+  
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-ink bg-bg relative min-h-screen overflow-x-hidden;
+  }
+  
+  /* Modern mesh background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      radial-gradient(circle at 15% 50%, rgba(167, 211, 151, 0.15), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(107, 138, 122, 0.1), transparent 25%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-ink;
+  }
+}
+
+/* Hide scrollbar for a cleaner look when overflow happens */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
